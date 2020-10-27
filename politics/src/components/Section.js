@@ -125,34 +125,12 @@ export default class Section extends Component {
 						<Grid item>
 							
 							<Grid container   direction="row" alignItems="baseline" spacing={2}>
-							{section.type!='union'?
-							<Box mr={0} component="span">
-								 <ToggleButtonGroup
-								 	size="small" 
-							      value={this.state.chart}
-							      exclusive
-							      onChange={this.handleChart}
-							      aria-label="text alignment"
-							    >
-								      <ToggleButton value="parliament" aria-label="left aligned">
-								        <AccountBalanceIcon />
-								      </ToggleButton>
-								      {
-								    	  checkRates?
-									      <ToggleButton value="rate" aria-label="left aligned">
-									        <HowToVoteIcon />
-									      </ToggleButton>
-									      :null
+							{section.logo==null||section.logo==''?<Box style={{height:"40px"}}/>:	<Box><img style={{height:"40px",position:'relative',top:"7px"}} src={section.logo}/></Box>}
 
-								      }
-								      <ToggleButton value="ideology" aria-label="centered">
-								        <EmojiObjectsIcon />
-								      </ToggleButton>
-							    </ToggleButtonGroup>
-						    </Box>
-						    :null
-							}
-						    
+							
+							
+						
+
 								<Grid item>
 									<Typography variant="h6" gutterBottom>
 									{name.name}
@@ -168,12 +146,43 @@ export default class Section extends Component {
 						</Grid>
 						<Grid item>
 							
-							<Select  value={selectedElection.id} >
-								{section.elections.map(election=>{
-									const name = this.props.nameService.getName('election',election.id);
-									return <MenuItem value={election.id}>{name.name}</MenuItem>
-								})}
-					  		</Select>
+
+						<Select  value={selectedElection.id} >
+							{section.elections.map(election=>{
+								const name = this.props.nameService.getName('election',election.id);
+								return <MenuItem value={election.id}>{name.name}</MenuItem>
+							})}
+				  		</Select>
+				  		
+						{section.type!='union'?
+								<Box ml={1} component="span">
+									 <ToggleButtonGroup
+									 	size="small" 
+								      value={this.state.chart}
+								      exclusive
+								      onChange={this.handleChart}
+								      aria-label="text alignment"
+								    >
+									      <ToggleButton value="parliament" aria-label="left aligned">
+									        <AccountBalanceIcon />
+									      </ToggleButton>
+									      {
+									    	  checkRates?
+										      <ToggleButton value="rate" aria-label="left aligned">
+										        <HowToVoteIcon />
+										      </ToggleButton>
+										      :null
+
+									      }
+									      <ToggleButton value="ideology" aria-label="centered">
+									        <EmojiObjectsIcon />
+									      </ToggleButton>
+								    </ToggleButtonGroup>
+							    </Box>
+							    :null
+								}
+
+						
 				  		</Grid>
 			  		
 			  	</Grid>

@@ -25,20 +25,11 @@ import {MainContext} from '../MainContext.js';
 
 export default class Country extends BaseComponent {
 	
-
-	apply = () => {
-		const country = this.props.data;
-		
-		if( this.state.flag != country.flag ){
-			this.setState({flag:country.flag})
-		}
-		
-	}
 	
 
 	
 	save(){
-		DataService.editCountry(this.props.data.id,{flag:this.state.flag});
+		DataService.editCountry(this.props.data.id,this.state);
 	}
 	
 	render() {
@@ -49,6 +40,8 @@ export default class Country extends BaseComponent {
 	    {main=>(
 	    	<>
 			<InputBase placeholder="flag"   name="flag" value={this.state.flag} onChange={this.handleChange.bind(this)}/>
+			<InputBase placeholder="hide"   name="hide" value={this.state.hide} onChange={this.handleChange.bind(this)}/>
+
 			<Button variant="contained" onClick={()=>this.save()}>save</Button>					
 			<List component="div" disablePadding>
 		        {Object.keys(names).map((key,i)=>{

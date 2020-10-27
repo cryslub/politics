@@ -160,7 +160,6 @@ class Header extends Component {
 		
 	    return  <div className={classes.root}>
 	 
-	    	<HideOnScroll>
 			    <AppBar position="fixed" className={classes.appBar} elevation={0}>
 				    <Toolbar>
 				      <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={()=>this.props.toggleElections(true)}>
@@ -169,7 +168,6 @@ class Header extends Component {
 			            
 				    </Toolbar>
 			  </AppBar>
-			  </HideOnScroll>
 		 
 	    </div>
 	}

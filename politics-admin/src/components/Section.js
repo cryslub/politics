@@ -36,6 +36,8 @@ export default class Section extends BaseComponent {
 			<Button variant="contained" onClick={()=>DataService.addName('section',section.id)}>+name</Button>
 			<br/>
 			<InputBase placeholder="type"   name="type" value={this.state.type} onChange={this.handleChange.bind(this)}/>
+			<InputBase placeholder="logo"   name="logo" value={this.state.logo} onChange={this.handleChange.bind(this)}/>
+
 			<Button variant="contained" onClick={()=>this.save()}>save</Button>		
 			
 			<h4>Elections <Button variant="contained" onClick={()=>DataService.addElection(section.id)}>+</Button></h4>

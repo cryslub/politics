@@ -66,49 +66,53 @@ export default class Country extends Component {
 			  return 0;
 		});
 		
-		return  <Box mb={4}>
-			<Grid container alignItems="baseline" spacing={1}>
-				<Grid item>
-					<img style={{height:'23px'}}  src={country.flag} />
-				</Grid>
-				<Grid item>
-					<Typography variant="h5" gutterBottom>
-					{name.name}
-					</Typography>
-				</Grid>
-			</Grid>
+		return  <div>
 
-			
-			<Box mb={2}>
-				<Grid container spacing={1}>
-					
-					
-					{country.parties.map(party=>{
-						if(party.hide=='Y') return null;
-						if(party.coalition !=undefined) return null;
-						if(party.province!=null && party.province!=0) return null;
-						if(party.isCoalition=='Y') return <Grid item style={{display:'flex'}}> <Coalition data={party} nameService={nameService}/> </Grid>
-
-						return <Grid item style={{display:'flex'}}>
-							<Party data={party} nameService={nameService} />
-						</Grid>
-					})}
+			<a  id={country.id} style={{  display: 'block',position: 'relative',top: '-80px',visibility: 'hidden'}}/>
+			<Box mb={4}>
+				<Grid container alignItems="baseline" spacing={1}>
+					<Grid item>
+						<img style={{height:'23px'}}  src={country.flag} />
+					</Grid>
+					<Grid item>
+						<Typography variant="h5" gutterBottom>
+						{name.name}
+						</Typography>
+					</Grid>
+				</Grid>
+	
 				
-				</Grid>
-			</Box>
-			
-
-			{country.provinces.map(province=>{
-				return <Province data={province} nameService={nameService} parties={country.parties}/>
-			})}
-
-			
-			<Paper>
-				{country.sections.map(section=>{
-					return <Section data={section} nameService={this.props.nameService} parties={this.props.parties}/>
+				<Box mb={2}>
+					<Grid container spacing={1}>
+						
+						
+						{country.parties.map(party=>{
+							if(party.hide=='Y') return null;
+							if(party.coalition !=undefined) return null;
+							if(party.province!=null && party.province!=0) return null;
+							if(party.isCoalition=='Y') return <Grid item style={{display:'flex'}}> <Coalition data={party} nameService={nameService}/> </Grid>
+	
+							return <Grid item style={{display:'flex'}}>
+								<Party data={party} nameService={nameService} />
+							</Grid>
+						})}
+					
+					</Grid>
+				</Box>
+				
+	
+				{country.provinces.map(province=>{
+					return <Province data={province} nameService={nameService} parties={country.parties}/>
 				})}
-			</Paper>
-
-		</Box>
+	
+				
+				<Paper>
+					{country.sections.map(section=>{
+						return <Section data={section} nameService={this.props.nameService} parties={this.props.parties}/>
+					})}
+				</Paper>
+	
+			</Box>
+		</div>
 	}
 }

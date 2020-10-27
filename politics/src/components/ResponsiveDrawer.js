@@ -38,6 +38,8 @@ import FaceIcon from '@material-ui/icons/Face';
 import WebIcon from '@material-ui/icons/Web';
 import WebAssetIcon from '@material-ui/icons/WebAsset';
 
+import { Router, Link ,useParams} from "@reach/router"
+
 import Header from './Header.js';
 
 const drawerWidth = 300;
@@ -136,9 +138,13 @@ function ResponsiveDrawer(props) {
 		                    	{continent.regions.map((region,i)=>{
 		        	        			const name = props.nameService.getName('region',region.id);
 		                    		
-				                      return <ListItem button className={classes.nested} onClick={()=>selectRegion(continent,region)}
+				                      return <ListItem button className={classes.nested} onClick={()=>selectRegion(continent,region)}					                      
+						                      {...{ to: '/politics/region/'+region.id }}
+						                      component={Link}
 		                    				selected={region.id === props.currentRegion.id} key={'region'+i}>
-				                        <ListItemText primary={name.name} />
+				                      	
+				                      			<ListItemText primary={name.name} />
+				                      	
 				                      </ListItem>			                    		
 		                    	})}
 		                    </List>

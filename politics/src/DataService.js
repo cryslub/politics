@@ -1,5 +1,5 @@
-//\const host = "http://localhost:8001/politics/admin/";
-const host = "admin/";
+const host = "http://localhost:8001/politics/admin/";
+//const host = "admin/";
 
 
  const DataService = {
